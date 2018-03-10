@@ -20,7 +20,7 @@ Setup role for running [nsxansible](https://github.com/vmware/nsxansible)
 
 ## ToDo
 
-- [] Verification environment
+- [ ] Installation support in Proxy environment
 
 ## License
 
