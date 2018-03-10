@@ -1,0 +1,71 @@
+---
+- name: Installing related packages
+  yum:
+    name: "{{ item }}"
+  with_items:
+    - epel-release
+
+- yum:
+    name: "{{ item }}"
+  with_items:
+    - python2-pip
+    - nodejs
+    - git
+    - gcc
+    - python-devel
+    - libxml2-devel
+    - libxslt-devel
+
+- name: Installing raml2html(nodejs)
+  npm:
+    name: https://github.com/yfauser/raml2html
+    global: yes
+    state: present
+
+- name: Installing raml2postman(nodejs)
+  npm:
+    name: https://github.com/yfauser/raml2postman
+    global: yes
+    state: present
+
+- name: Installing raml-fleece(nodejs)
+  npm:
+    name: janrain/raml-fleece
+    global: yes
+    state: present
+
+- name: Installing raml2md(nodejs)
+  npm:
+    name: raml2md
+    global: yes
+    state: present
+
+- name: Installing nsxramlclient(python)
+  pip:
+    name: nsxramlclient
+    state: present
+
+- name: Installing pyvmomi(python)
+  pip:
+    name: pyvmomi
+    state: present
+
+- name: Installing requests(python)
+  pip:
+    name: requests
+    state: present
+
+- name: git clone nsxraml
+  git:
+    repo: https://github.com/vmware/nsxraml.git
+    clone: yes
+    dest: /usr/local/nsxraml
+
+- name: run create_artifacts.sh script
+  shell: /usr/local/nsxraml/create_artifacts.sh
+
+- name: git clone nsxansible
+  git:
+    repo: https://github.com/vmware/nsxansible.git
+    clone: yes
+    dest: /usr/local/nsxansible

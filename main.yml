@@ -1,0 +1,7 @@
+---
+- name: NSX for vSphere Ansible Modules Setup
+  hosts: server
+  become: yes
+  gather_facts: no
+  roles:
+    - nsx_ansible_module_setup
