@@ -63,6 +63,8 @@
 
 - name: run create_artifacts.sh script
   shell: /usr/local/nsxraml/create_artifacts.sh
+  args:
+    chdir: /usr/local/nsxraml
 
 - name: git clone nsxansible
   git:
